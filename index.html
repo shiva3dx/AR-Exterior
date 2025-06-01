@@ -34,10 +34,6 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       }
 
-      video {
-        display: none;
-      }
-
       a-scene {
         display: none;
       }
@@ -49,17 +45,7 @@
     <!-- Button to Start AR -->
     <button id="start-button">View in AR</button>
 
-    <!-- Hidden Video Element -->
-    <video id="vid"
-           autoplay
-           muted
-           playsinline
-           loop
-           crossorigin="anonymous"
-           src="your360video.mp4">
-    </video>
-
-    <!-- A-Frame + AR Scene -->
+    <!-- A-Frame Scene with Assets -->
     <a-scene
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
@@ -67,6 +53,10 @@
       renderer="logarithmicDepthBuffer: true"
       id="ar-scene"
     >
+      <a-assets>
+        <video id="vid" autoplay loop="true" muted playsinline crossorigin="anonymous" src="your360video.mp4"></video>
+      </a-assets>
+
       <a-videosphere src="#vid" rotation="0 -90 0"></a-videosphere>
       <a-entity camera></a-entity>
     </a-scene>
@@ -82,6 +72,6 @@
         startBtn.style.display = 'none';
       });
     </script>
-    
+
   </body>
 </html>
